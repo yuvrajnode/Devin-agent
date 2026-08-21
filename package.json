@@ -2,7 +2,7 @@
   "name": "devin",
   "version": "1.0.0",
   "private": true,
-  "description": "An autonomous software-engineering agent workspace \u2014 plan, execute, and review code changes in a live environment.",
+  "description": "An autonomous software-engineering agent workspace — plan, execute, and review code changes in a live environment.",
   "engines": {
     "node": ">=20.9.0"
   },
@@ -17,6 +17,7 @@
     "verify": "npm run typecheck && npm run lint && npm run test && npm run build"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "0.120.0",
     "next": "16.3.2",
     "react": "19.2.8",
     "react-dom": "19.2.8",
