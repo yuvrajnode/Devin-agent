@@ -30,17 +30,15 @@ function Bubble({ message }: { message: ChatMessage }) {
 export function ChatPanel({
   messages,
   running,
-  initialValue = "",
   onSubmit,
   onStop,
 }: {
   messages: ChatMessage[];
   running: boolean;
-  initialValue?: string;
   onSubmit: (objective: string) => void;
   onStop: () => void;
 }) {
-  const [draft, setDraft] = useState(initialValue);
+  const [draft, setDraft] = useState("");
   const scroller = useRef<HTMLDivElement>(null);
   const textarea = useRef<HTMLTextAreaElement>(null);
 
