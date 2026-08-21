@@ -1,10 +1,10 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 export function Panel({
   className,
   ...props
-}: HTMLAttributes<HTMLDivElement>) {
+}: ComponentPropsWithRef<"div">) {
   return (
     <div
       className={cn(
@@ -44,7 +44,7 @@ export function PanelHeader({
 export function PanelBody({
   className,
   ...props
-}: HTMLAttributes<HTMLDivElement>) {
+}: ComponentPropsWithRef<"div">) {
   return (
     <div
       className={cn("hide-scrollbar min-h-0 flex-1 overflow-y-auto", className)}
