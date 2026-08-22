@@ -97,6 +97,10 @@ export const useStore = create<StoreState>()(
       },
 
       remove(id) {
+        // Deleting the run that is streaming must also cancel it, or the
+        // request keeps producing into a session that no longer exists.
+        if (get().activeId === id) get().stop();
+
         set((state) => {
           const sessions = state.sessions.filter((session) => session.id !== id);
           return {

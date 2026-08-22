@@ -47,7 +47,7 @@ export function PanelBody({
 }: ComponentPropsWithRef<"div">) {
   return (
     <div
-      className={cn("hide-scrollbar min-h-0 flex-1 overflow-y-auto", className)}
+      className={cn("scrollbar-slim min-h-0 flex-1 overflow-y-auto", className)}
       {...props}
     />
   );

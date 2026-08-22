@@ -36,11 +36,14 @@ export function checkRateLimit(key: string, now = Date.now()): LimitResult {
 
   if (hits.size >= MAX_TRACKED_CLIENTS && !hits.has(key)) {
     // Evict the least recently seen client rather than growing without bound.
+    // Map preserves insertion order and re-setting an existing key does not
+    // move it, so every touch below deletes first to keep the order true LRU.
     const oldestKey = hits.keys().next().value;
     if (oldestKey !== undefined) hits.delete(oldestKey);
   }
 
   recent.push(now);
+  hits.delete(key);
   hits.set(key, recent);
 
   return {

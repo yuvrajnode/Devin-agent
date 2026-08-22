@@ -138,12 +138,6 @@ export type AgentEvent =
   | { type: "run.finished"; state: Extract<RunState, "done" | "failed" | "blocked"> }
   | { type: "error"; message: string };
 
-export const TERMINAL_STATES: readonly RunState[] = ["done", "failed"] as const;
-
-export function isTerminal(state: RunState): boolean {
-  return TERMINAL_STATES.includes(state);
-}
-
 /** Aggregate changeset across every step that produced a diff. */
 export function changeset(plan: Plan | null): DiffHunk[] {
   if (!plan) return [];

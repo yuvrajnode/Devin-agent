@@ -183,7 +183,7 @@ body {
   background-size: 56px 56px;
 }
 
-@utility hide-scrollbar {
+@utility scrollbar-slim {
   scrollbar-width: thin;
   scrollbar-color: var(--line-strong) transparent;
 

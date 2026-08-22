@@ -52,7 +52,7 @@ export function TerminalPane({ plan }: { plan: Plan | null }) {
     <div
       ref={scroller}
       onScroll={onScroll}
-      className="hide-scrollbar h-full overflow-y-auto bg-surface-inset px-3 py-3 font-mono text-2xs leading-5"
+      className="scrollbar-slim h-full overflow-y-auto bg-surface-inset px-3 py-3 font-mono text-2xs leading-5"
     >
       {active.map((step) => (
         <section key={step.id} className="mb-4 last:mb-0">

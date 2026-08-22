@@ -173,13 +173,8 @@ export function repoFiles(): RepoFile[] {
   return FILES.map((file) => ({ ...file }));
 }
 
-export function findFile(path: string): RepoFile | undefined {
-  const match = FILES.find((file) => file.path === path);
-  return match ? { ...match } : undefined;
-}
-
 /** Counts `+`/`-` lines in a unified diff body. */
-export function countDiffLines(body: string): {
+function countDiffLines(body: string): {
   additions: number;
   deletions: number;
 } {

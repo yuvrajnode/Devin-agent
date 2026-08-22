@@ -122,7 +122,7 @@ export function WorkspaceShell() {
               </span>
             }
           />
-          <div className="hide-scrollbar min-h-0 flex-1 overflow-y-auto">
+          <div className="scrollbar-slim min-h-0 flex-1 overflow-y-auto">
             {hydrated ? (
               <SessionList
                 sessions={sessions}

@@ -49,6 +49,18 @@ describe("checkRateLimit", () => {
   });
 });
 
+describe("client tracking", () => {
+  it("keeps a client's budget intact across many other clients", () => {
+    const now = 1_000_000;
+    for (let i = 0; i < LIMIT; i += 1) checkRateLimit("hot", now);
+
+    // Traffic from other clients must not silently reset an existing budget.
+    for (let i = 0; i < 200; i += 1) checkRateLimit(`cold-${i}`, now);
+
+    expect(checkRateLimit("hot", now).allowed).toBe(false);
+  });
+});
+
 describe("clientKey", () => {
   it("prefers the first x-forwarded-for entry", () => {
     const headers = new Headers({ "x-forwarded-for": "1.1.1.1, 2.2.2.2" });

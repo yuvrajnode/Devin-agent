@@ -92,7 +92,7 @@ export function ChatPanel({
           maxLength={400}
           disabled={running}
           placeholder="Fix the bug where bursts slip through at the window boundary…"
-          className="hide-scrollbar w-full resize-none rounded-hair border bg-surface-inset px-2.5 py-2 text-sm leading-relaxed text-content-primary placeholder:text-content-muted focus:border-accent-line focus:outline-none disabled:opacity-50"
+          className="scrollbar-slim w-full resize-none rounded-hair border bg-surface-inset px-2.5 py-2 text-sm leading-relaxed text-content-primary placeholder:text-content-muted focus:border-accent-line focus:outline-none disabled:opacity-50"
         />
 
         <div className="mt-2 flex items-center gap-2">

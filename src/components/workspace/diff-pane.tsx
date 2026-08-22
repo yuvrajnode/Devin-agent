@@ -29,7 +29,7 @@ export function DiffPane({ plan }: { plan: Plan | null }) {
   const deletions = hunks.reduce((total, hunk) => total + hunk.deletions, 0);
 
   return (
-    <div className="hide-scrollbar h-full overflow-y-auto">
+    <div className="scrollbar-slim h-full overflow-y-auto">
       <div className="flex items-center gap-3 border-b bg-surface-raised/50 px-3 py-2">
         <span className="label">
           {hunks.length} file{hunks.length === 1 ? "" : "s"} changed
@@ -51,7 +51,7 @@ export function DiffPane({ plan }: { plan: Plan | null }) {
               −{hunk.deletions}
             </span>
           </header>
-          <pre className="hide-scrollbar overflow-x-auto bg-surface-inset py-1 font-mono text-2xs leading-5">
+          <pre className="scrollbar-slim overflow-x-auto bg-surface-inset py-1 font-mono text-2xs leading-5">
             {hunk.body.split("\n").map((line, i) => (
               <div key={i} className={cn("px-3", lineTone(line))}>
                 {line || " "}

@@ -35,7 +35,7 @@ export function FilesPane({ plan }: { plan: Plan | null }) {
 
   return (
     <div className="grid h-full grid-cols-[minmax(150px,34%)_1fr] divide-x">
-      <nav className="hide-scrollbar overflow-y-auto py-1">
+      <nav className="scrollbar-slim overflow-y-auto py-1">
         {files.map((file) => {
           const isActive = file.path === active?.path;
           return (
@@ -59,7 +59,7 @@ export function FilesPane({ plan }: { plan: Plan | null }) {
         })}
       </nav>
 
-      <div className="hide-scrollbar min-w-0 overflow-auto bg-surface-inset">
+      <div className="scrollbar-slim min-w-0 overflow-auto bg-surface-inset">
         {active ? (
           <pre className="font-mono text-2xs leading-5">
             {active.content.split("\n").map((line, i) => (
