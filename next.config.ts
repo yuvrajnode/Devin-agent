@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Emits a self-contained server bundle so the Docker image can ship without
+  // node_modules. Platforms that build the app themselves ignore this.
+  output: "standalone",
   poweredByHeader: false,
   typedRoutes: true,
   async headers() {
