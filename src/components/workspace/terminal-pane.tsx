@@ -6,7 +6,7 @@ import type { Plan } from "@/lib/agent/types";
 
 const LEVEL: Record<string, string> = {
   out: "text-content-secondary",
-  err: "text-fault-500",
+  err: "text-status-fail",
   note: "text-accent",
 };
 
@@ -52,6 +52,11 @@ export function TerminalPane({ plan }: { plan: Plan | null }) {
     <div
       ref={scroller}
       onScroll={onScroll}
+      // A scroll region whose content is not focusable is unreachable by
+      // keyboard, so it takes focus itself.
+      tabIndex={0}
+      role="log"
+      aria-label="Step output"
       className="scrollbar-slim h-full overflow-y-auto bg-surface-inset px-3 py-3 font-mono text-2xs leading-5"
     >
       {active.map((step) => (

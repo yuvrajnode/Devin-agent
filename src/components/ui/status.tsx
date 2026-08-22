@@ -9,17 +9,17 @@ const TONE: Record<RunState, { dot: string; text: string; label: string }> = {
     label: "Planning",
   },
   running: {
-    dot: "bg-signal-500 animate-pulse-dot",
-    text: "text-signal-500",
+    dot: "bg-status-ok animate-pulse-dot",
+    text: "text-status-ok",
     label: "Running",
   },
   blocked: {
-    dot: "bg-amber-signal",
-    text: "text-amber-signal",
+    dot: "bg-status-warn",
+    text: "text-status-warn",
     label: "Needs input",
   },
-  done: { dot: "bg-signal-500", text: "text-signal-500", label: "Complete" },
-  failed: { dot: "bg-fault-500", text: "text-fault-500", label: "Failed" },
+  done: { dot: "bg-status-ok", text: "text-status-ok", label: "Complete" },
+  failed: { dot: "bg-status-fail", text: "text-status-fail", label: "Failed" },
 };
 
 export function StatusDot({ state }: { state: RunState }) {

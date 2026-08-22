@@ -22,7 +22,7 @@ export default function NotFound() {
         </Link>
         <Link
           href="/workspace"
-          className="inline-flex h-10 items-center rounded-hair bg-accent px-4 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+          className="inline-flex h-10 items-center rounded-hair bg-accent-solid px-4 text-sm font-medium text-white transition-colors hover:bg-accent-solid-hover"
         >
           Open workspace
         </Link>

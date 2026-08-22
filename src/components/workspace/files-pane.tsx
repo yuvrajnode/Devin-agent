@@ -59,7 +59,12 @@ export function FilesPane({ plan }: { plan: Plan | null }) {
         })}
       </nav>
 
-      <div className="scrollbar-slim min-w-0 overflow-auto bg-surface-inset">
+      <div
+        tabIndex={0}
+        role="region"
+        aria-label={active ? `Contents of ${active.path}` : "File contents"}
+        className="scrollbar-slim min-w-0 overflow-auto bg-surface-inset"
+      >
         {active ? (
           <pre className="font-mono text-2xs leading-5">
             {active.content.split("\n").map((line, i) => (

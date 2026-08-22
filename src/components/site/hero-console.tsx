@@ -16,7 +16,7 @@ const ROWS: Row[] = [
 ];
 
 const MARK: Record<Row["state"], string> = {
-  done: "text-signal-500",
+  done: "text-status-ok",
   active: "text-accent",
   pending: "text-content-muted",
 };
@@ -66,8 +66,8 @@ export function HeroConsole() {
 
       <div className="border-t bg-surface-inset px-3 py-3 font-mono text-2xs leading-5">
         <p className="text-content-muted">$ applying patch to src/server/rate-limit.ts</p>
-        <p className="text-fault-500">- const bucket = Math.floor(Date.now() / windowMs);</p>
-        <p className="text-signal-500">+ await redis.zRemRangeByScore(windowKey, 0, now - windowMs);</p>
+        <p className="text-status-fail">- const bucket = Math.floor(Date.now() / windowMs);</p>
+        <p className="text-status-ok">+ await redis.zRemRangeByScore(windowKey, 0, now - windowMs);</p>
         <p className="text-content-secondary">
           <span className="text-accent">›</span> kept RateLimitResult so no caller changes
           <span className="animate-caret text-accent">▌</span>

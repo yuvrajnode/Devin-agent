@@ -64,7 +64,7 @@ export function SessionList({
               type="button"
               onClick={() => onRemove(session.id)}
               aria-label={`Delete run: ${session.title}`}
-              className="absolute top-2.5 right-2 rounded-hair p-1 text-content-muted opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100 hover:text-fault-500"
+              className="absolute top-2.5 right-2 rounded-hair p-1 text-content-muted opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100 hover:text-status-fail"
             >
               <svg viewBox="0 0 12 12" className="size-3" aria-hidden>
                 <path

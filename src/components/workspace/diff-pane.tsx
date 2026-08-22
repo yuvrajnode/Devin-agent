@@ -5,8 +5,8 @@ import { changeset } from "@/lib/agent/types";
 import type { Plan } from "@/lib/agent/types";
 
 function lineTone(line: string): string {
-  if (line.startsWith("+")) return "bg-signal-500/10 text-signal-400";
-  if (line.startsWith("-")) return "bg-fault-500/10 text-fault-500";
+  if (line.startsWith("+")) return "bg-status-ok/10 text-status-ok";
+  if (line.startsWith("-")) return "bg-status-fail/10 text-status-fail";
   if (line.startsWith("@@")) return "text-accent";
   return "text-content-secondary";
 }
@@ -29,13 +29,18 @@ export function DiffPane({ plan }: { plan: Plan | null }) {
   const deletions = hunks.reduce((total, hunk) => total + hunk.deletions, 0);
 
   return (
-    <div className="scrollbar-slim h-full overflow-y-auto">
+    <div
+      tabIndex={0}
+      role="region"
+      aria-label="Changeset"
+      className="scrollbar-slim h-full overflow-y-auto"
+    >
       <div className="flex items-center gap-3 border-b bg-surface-raised/50 px-3 py-2">
         <span className="label">
           {hunks.length} file{hunks.length === 1 ? "" : "s"} changed
         </span>
-        <span className="font-mono text-2xs text-signal-500">+{additions}</span>
-        <span className="font-mono text-2xs text-fault-500">−{deletions}</span>
+        <span className="font-mono text-2xs text-status-ok">+{additions}</span>
+        <span className="font-mono text-2xs text-status-fail">−{deletions}</span>
       </div>
 
       {hunks.map((hunk) => (
@@ -44,10 +49,10 @@ export function DiffPane({ plan }: { plan: Plan | null }) {
             <span className="truncate font-mono text-2xs text-content-primary">
               {hunk.path}
             </span>
-            <span className="ml-auto shrink-0 font-mono text-2xs text-signal-500">
+            <span className="ml-auto shrink-0 font-mono text-2xs text-status-ok">
               +{hunk.additions}
             </span>
-            <span className="shrink-0 font-mono text-2xs text-fault-500">
+            <span className="shrink-0 font-mono text-2xs text-status-fail">
               −{hunk.deletions}
             </span>
           </header>

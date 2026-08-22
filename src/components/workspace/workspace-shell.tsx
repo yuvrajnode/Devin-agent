@@ -87,9 +87,9 @@ export function WorkspaceShell() {
       {error ? (
         <div
           role="alert"
-          className="flex shrink-0 items-center gap-3 border-b bg-fault-500/10 px-3 py-2"
+          className="flex shrink-0 items-center gap-3 border-b bg-status-fail/10 px-3 py-2"
         >
-          <span className="text-sm text-fault-500">{error}</span>
+          <span className="text-sm text-status-fail">{error}</span>
           <button
             type="button"
             onClick={clearError}

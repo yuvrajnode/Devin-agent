@@ -9,8 +9,8 @@ import type { Plan, Step, StepState } from "@/lib/agent/types";
 const GLYPH: Record<StepState, { mark: string; tone: string }> = {
   pending: { mark: "○", tone: "text-content-muted" },
   active: { mark: "◐", tone: "text-accent animate-pulse-dot" },
-  done: { mark: "●", tone: "text-signal-500" },
-  failed: { mark: "✕", tone: "text-fault-500" },
+  done: { mark: "●", tone: "text-status-ok" },
+  failed: { mark: "✕", tone: "text-status-fail" },
   skipped: { mark: "–", tone: "text-content-muted" },
 };
 
@@ -69,8 +69,8 @@ function StepRow({ step }: { step: Step }) {
               {step.rationale}
               {step.diff ? (
                 <span className="mt-1.5 block font-mono text-2xs">
-                  <span className="text-signal-500">+{step.diff.additions}</span>{" "}
-                  <span className="text-fault-500">−{step.diff.deletions}</span>{" "}
+                  <span className="text-status-ok">+{step.diff.additions}</span>{" "}
+                  <span className="text-status-fail">−{step.diff.deletions}</span>{" "}
                   <span className="text-content-muted">{step.diff.path}</span>
                 </span>
               ) : null}

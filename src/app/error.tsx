@@ -22,7 +22,7 @@ export default function RouteError({
   return (
     <main className="flex min-h-dvh flex-col items-center justify-center px-6 text-center">
       <Wordmark className="text-content-primary" />
-      <p className="label mt-10 text-fault-500">Unhandled error</p>
+      <p className="label mt-10 text-status-fail">Unhandled error</p>
       <h1 className="mt-3 text-2xl font-medium tracking-tight">
         Something broke on this page.
       </h1>

@@ -60,7 +60,7 @@ export function ChatPanel({
     <Panel className="h-full">
       <PanelHeader title="Conversation" />
 
-      <PanelBody ref={scroller}>
+      <PanelBody ref={scroller} tabIndex={0} role="log" aria-label="Conversation">
         {messages.length === 0 ? (
           <div className="flex h-full items-center justify-center p-6">
             <p className="max-w-[16rem] text-center text-sm text-content-muted">

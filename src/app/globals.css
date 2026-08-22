@@ -26,10 +26,6 @@
   --color-ember-500: #e4622e;
   --color-ember-600: #c44e20;
 
-  --color-signal-400: #6fd7b0;
-  --color-signal-500: #3fbf92;
-  --color-amber-signal: #e0a83c;
-  --color-fault-500: #e05252;
 
   --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
@@ -60,13 +56,22 @@
 
   --content-primary: #e9ebee;
   --content-secondary: #9aa3af;
-  --content-muted: #6a7381;
+  /* Raised until 11px text clears 4.5:1 against the accent-tinted row too. */
+  --content-muted: #828b99;
   --content-inverse: #08090b;
 
   --accent: var(--color-ember-500);
   --accent-hover: var(--color-ember-400);
   --accent-soft: rgb(228 98 46 / 0.14);
   --accent-line: rgb(228 98 46 / 0.36);
+  /* The accent as a filled background under white text: the lighter accent
+     only reaches 3.45:1, which fails AA for button labels. */
+  --accent-solid: #b8481d;
+  --accent-solid-hover: #9c3c17;
+
+  --status-ok: #3fbf92;
+  --status-warn: #e0a83c;
+  --status-fail: #e97070;
 
   --grid-line: rgb(255 255 255 / 0.028);
   --selection: rgb(228 98 46 / 0.3);
@@ -86,13 +91,22 @@
 
   --content-primary: #14161a;
   --content-secondary: #555d68;
-  --content-muted: #838b96;
+  --content-muted: #656c78;
   --content-inverse: #fbfaf8;
 
-  --accent: var(--color-ember-600);
-  --accent-hover: var(--color-ember-500);
-  --accent-soft: rgb(196 78 32 / 0.1);
-  --accent-line: rgb(196 78 32 / 0.28);
+  /* Darker than ember-600 so 11px accent text still clears 4.5:1 when it
+     sits on an accent-tinted row rather than on the plain paper ground. */
+  --accent: #ad431b;
+  --accent-hover: var(--color-ember-600);
+  --accent-soft: rgb(173 67 27 / 0.1);
+  --accent-line: rgb(173 67 27 / 0.28);
+  --accent-solid: #b8481d;
+  --accent-solid-hover: #9c3c17;
+
+  /* Darkened for a light ground: the dark-theme hues sit near 2:1 on paper. */
+  --status-ok: #12775a;
+  --status-warn: #8a6412;
+  --status-fail: #c02b2b;
 
   --grid-line: rgb(8 9 11 / 0.04);
   --selection: rgb(196 78 32 / 0.18);
@@ -118,6 +132,12 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);
   --color-accent-line: var(--accent-line);
+  --color-accent-solid: var(--accent-solid);
+  --color-accent-solid-hover: var(--accent-solid-hover);
+
+  --color-status-ok: var(--status-ok);
+  --color-status-warn: var(--status-warn);
+  --color-status-fail: var(--status-fail);
 }
 
 /* --- Base ---------------------------------------------------------------- */
