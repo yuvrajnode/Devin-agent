@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { HeroConsole } from "@/components/site/hero-console";
 import { ObjectiveLauncher } from "@/components/site/objective-launcher";
+import { PipelineDiagram } from "@/components/site/pipeline-diagram";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteNav } from "@/components/site/site-nav";
 import { TOOLS } from "@/lib/agent/types";
@@ -184,24 +185,9 @@ export default function HomePage() {
 
             <figure className="rounded-panel border bg-surface-base p-5">
               <figcaption className="label">Request path</figcaption>
-              <pre className="hide-scrollbar mt-4 overflow-x-auto font-mono text-2xs leading-6 text-content-secondary">
-{`  browser                    server
- ────────                  ────────
- composer  ──POST /api/run──▶  validate + rate limit
-                                      │
-                                      ▼
-                              planner  ├─ heuristic  (default)
-                                       └─ model      (ANTHROPIC_API_KEY)
-                                      │
-                                      ▼
-                              engine   async generator
-                                      │  yields AgentEvent
-                                      ▼
- reader   ◀───── text/event-stream ───┘
-    │
-    ▼
- reduce()  ──▶  Session  ──▶  plan · terminal · diff · chat`}
-              </pre>
+              <div className="mt-4">
+                <PipelineDiagram />
+              </div>
             </figure>
           </div>
         </section>

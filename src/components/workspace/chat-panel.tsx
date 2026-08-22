@@ -40,11 +40,12 @@ export function ChatPanel({
 }) {
   const [draft, setDraft] = useState("");
   const scroller = useRef<HTMLDivElement>(null);
-  const textarea = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
+    // Only chase the tail once there is a conversation; the empty state is
+    // centred and must not be scrolled off the top of a short panel.
     const node = scroller.current;
-    if (node) node.scrollTop = node.scrollHeight;
+    if (node && messages.length > 0) node.scrollTop = node.scrollHeight;
   }, [messages.length]);
 
   const ready = draft.trim().length >= MIN_OBJECTIVE_LENGTH && !running;
@@ -79,7 +80,6 @@ export function ChatPanel({
 
       <div className="shrink-0 border-t p-2.5">
         <textarea
-          ref={textarea}
           value={draft}
           onChange={(event) => setDraft(event.target.value)}
           onKeyDown={(event) => {
@@ -91,7 +91,7 @@ export function ChatPanel({
           rows={3}
           maxLength={400}
           disabled={running}
-          placeholder="Fix the rate limiter letting bursts through at the window boundary…"
+          placeholder="Fix the bug where bursts slip through at the window boundary…"
           className="hide-scrollbar w-full resize-none rounded-hair border bg-surface-inset px-2.5 py-2 text-sm leading-relaxed text-content-primary placeholder:text-content-muted focus:border-accent-line focus:outline-none disabled:opacity-50"
         />
 

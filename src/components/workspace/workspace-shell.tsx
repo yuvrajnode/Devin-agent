@@ -100,11 +100,17 @@ export function WorkspaceShell() {
         </div>
       ) : null}
 
-      <div className="grid min-h-0 flex-1 grid-cols-1 gap-2 overflow-y-auto p-2 lg:grid-cols-[13rem_minmax(20rem,1fr)_1.35fr] lg:overflow-hidden">
+      {/*
+        Below lg the panes are a scrolling stack with fixed heights, so each one
+        keeps its own internal scroll instead of being clipped by a collapsing
+        grid row. At lg the whole thing becomes a fixed-viewport three-column
+        layout and only the panes scroll.
+      */}
+      <div className="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto p-2 lg:grid lg:grid-cols-[13rem_minmax(20rem,1fr)_1.35fr] lg:overflow-hidden">
         <Panel
           className={cn(
             // A drawer below lg, a permanent column at lg and above.
-            "min-h-0 lg:block",
+            "h-64 shrink-0 lg:block lg:h-auto lg:min-h-0",
             sidebarOpen ? "block" : "hidden",
           )}
         >
@@ -131,17 +137,21 @@ export function WorkspaceShell() {
           </div>
         </Panel>
 
-        <div className="grid min-h-0 grid-rows-[minmax(14rem,1fr)_minmax(15rem,1fr)] gap-2">
-          <PlanPanel plan={session?.plan ?? null} />
-          <ChatPanel
-            messages={session?.messages ?? []}
-            running={running}
-            onSubmit={(objective) => void start(objective)}
-            onStop={stop}
-          />
+        <div className="flex flex-col gap-2 lg:grid lg:min-h-0 lg:grid-rows-[1.2fr_1fr]">
+          <div className="h-[22rem] shrink-0 lg:h-auto lg:min-h-0">
+            <PlanPanel plan={session?.plan ?? null} />
+          </div>
+          <div className="h-[22rem] shrink-0 lg:h-auto lg:min-h-0">
+            <ChatPanel
+              messages={session?.messages ?? []}
+              running={running}
+              onSubmit={(objective) => void start(objective)}
+              onStop={stop}
+            />
+          </div>
         </div>
 
-        <div className="min-h-[22rem] lg:min-h-0">
+        <div className="h-[28rem] shrink-0 lg:h-auto lg:min-h-0">
           <WorkSurface plan={session?.plan ?? null} />
         </div>
       </div>

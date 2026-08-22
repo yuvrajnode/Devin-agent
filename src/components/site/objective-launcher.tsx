@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { MIN_OBJECTIVE_LENGTH } from "@/lib/server/validate";
 
 const EXAMPLES = [
-  "Fix the rate limiter letting bursts through at the window boundary",
+  "Fix the bug where bursts slip through at the window boundary",
   "Add idempotent retries to the payments gateway client",
   "Document the request path and every environment variable",
 ];
