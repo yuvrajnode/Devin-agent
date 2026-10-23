@@ -161,6 +161,3 @@ changeset — not the sandbox itself. Every seam a real runtime would plug into
 is a real seam: `RunOptions.draft` accepts an externally produced plan, and
 `StepScript` is where a live tool result would arrive.
 
-## Licence
-
-MIT — see [LICENSE](./LICENSE).
